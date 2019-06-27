@@ -7,24 +7,24 @@ const router = express.Router();
 router.get('/', function(req, res){
     burger.selectAll(function(data){
         let hbsObject = {
-            cats: data
+            burgers: data
         };
         res.render('index', hbsObject);
     });
 });
 
-router.post('/api/burgers', function(req, res){
-    burger.create(['burger_name', 'devoured'],
+router.post('/api/newburger', function(req, res){
+    burger.insertOne(['burger_name', 'devoured'],
     [req.body.name, req.body.devoured],
     function(result){
         res.json({id: result.insertID});
     });
 });
 
-router.put('/api/burgers/:id', function(req, res){
+router.put('/api/updateburger/:id', function(req, res){
     let condition = 'id = ' + req.params.id;
 
-    burger.update({ 
+    burger.updateOne({ 
         devoured: req.body.devoured
     }, function(result){
         if (result.changedRows == 0) {

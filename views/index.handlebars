@@ -1,0 +1,52 @@
+<h1>Eat Da Burger</h1>
+
+<h2>Burger Menu</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#unless devoured}}
+            {{burgers/burger-block devoured=true}}
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Burgers You've Eaten</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#unless devoured}}
+            {{burgers/burger-block devoured=false}}
+        {{/unless}}
+    {{/each}}
+</ul>
+
+{{!-- old burger input --}}
+{{!-- <h2>New Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bur">Burger Name:</label>
+    <input type="text" id="bur" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="devoured">Sleepy?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div>
+
+  <button type="submit">Add Cat</button>
+</form> --}}
+
+{{!-- new burger input --}}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center enter_section">
+			<form action="api/burgers/" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
+			<p>Submit New Burger Here!</p>
+		</div>
+	</div>
+</div>

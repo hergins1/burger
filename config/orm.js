@@ -10,7 +10,7 @@ let orm = {
     },
     
     insertOne: function(tableInput, value, cb) {
-        var queryString = "INSERT INTO ?? ('burger_name') VALUES ?";
+        let queryString = "INSERT INTO ?? ('burger_name') VALUES ?";
         
         connection.query(queryString, [tableInput, value], function(err, result) {
           if (err) throw err;
@@ -18,7 +18,14 @@ let orm = {
         });
     },
 
-    updateOne()
+    updateOne: function(tableInput, objColVals, condition, cb){
+        let queryString = "UPDATE" + tableInput +  "SET" + objColVals + "WHERE " + condition;
+
+        connection.query(queryString, function(err, result){
+            if (err) throw err;
+            cb(result);
+        });
+    }
 }
 
 module.exports = orm;
