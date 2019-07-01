@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text center">
+    <div class="col-md-12 text-center">
       <h1>Eat Da Burger</h1>
     </div>
 
-    <div class="col-md-12 text center">
+    <div class="col-md-12 text-center">
       <h2>Burger Menu</h2>
       <div class="row">
-        <ul>
+        
           {{#each burgers}}
           {{#unless this.devoured}}
           <div class="col-md-9 text-center">
-            <pre>{{this.id}}. {{this.burger_name}}
+            <pre>
+              {{this.id}}. {{this.burger_name}}
             </pre>
           </div>
           <div class="col-md-3 text-center">
@@ -22,7 +23,7 @@
           </div>
           {{/unless}}
           {{/each}}
-        </ul>
+        
       </div>
     </div>
     <div class="col-med-12 text-center">
@@ -33,14 +34,6 @@
           {{/if}}
         {{/each}}
     </div>
-
-    <ul>
-      {{#each burgers}}
-      {{#unless devoured}}
-      {{burgers/burger-block devoured=false}}
-      {{/unless}}
-      {{/each}}
-    </ul>
   </div>
 </div>
 
